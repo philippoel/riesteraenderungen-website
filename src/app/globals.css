@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Design riesteränderungen.de: sachlich wie eine Zeitung. Weiß, Dunkelblau, Rot als Signal,
+   IBM Plex Sans, fast eckige Formen, Linien links als Akzent. Bewusst anders als justavd.de. */
+@theme {
+  --font-sans: var(--font-plex), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --color-grund: #ffffff;
+  --color-band: #eef2f7;       /* Bänder */
+  --color-linie: #d5dde8;
+  --color-tinte: #102a4c;      /* Überschriften */
+  --color-text: #2c3e55;       /* Fließtext (10:1) */
+  --color-leise: #55657a;      /* Nebentext (5,9:1) */
+  --color-akzent: #1d4f91;     /* Knöpfe, Links (weiße Schrift 8:1) */
+  --color-akzent-dunkel: #143a6c;
+  --color-signal: #b4232c;     /* "neu", Markierungen (6,4:1) */
+  --color-signal-hell: #fbeaea;
+
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.375rem;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body { background: var(--color-grund); color: var(--color-text); }
+
+@layer base {
+  h1, h2, h3 { color: var(--color-tinte); text-wrap: balance; letter-spacing: -0.01em; }
+  p { text-wrap: pretty; }
+}
+table, .zahl { font-variant-numeric: tabular-nums; }
+::selection { background: var(--color-signal-hell); color: var(--color-tinte); }
+:focus-visible { outline: 2px solid var(--color-akzent); outline-offset: 3px; }
+input[type="range"] { accent-color: var(--color-akzent); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
